@@ -1,386 +1,420 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaurish | The Unkindled</title>
 
-    <title>Gaurish | CSE Student</title>
+</head> <body bgcolor="#0b0b0b" text="#d6d0c4">
+<header>
+    <center>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        <h1>⚔️ GAURISH ⚔️</h1>
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0b0f19;
-            color: #ffffff;
-            line-height: 1.6;
-        }
+        <h2>THE UNKINDLED</h2>
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 18px 8%;
-            background: rgba(11, 15, 25, 0.9);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 1px solid #1f2937;
-        }
+        <p>
+            <i>
+                "In a world swallowed by darkness,<br>
+                even a faint ember can keep the flame alive."
+            </i>
+        </p>
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00e5ff;
-        }
+        <hr>
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
+        <nav>
+            <a href="#home">🔥 Bonfire</a> |
+            <a href="#about">📜 Lore</a> |
+            <a href="#skills">⚔️ Abilities</a> |
+            <a href="#interests">🛡️ Adventures</a> |
+            <a href="#education">🏰 Journey</a> |
+            <a href="#contact">💀 Summon Me</a>
+        </nav>
 
-        nav a {
-            color: #ddd;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+        <hr>
 
-        nav a:hover {
-            color: #00e5ff;
-        }
+    </center>
+</header>
 
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 100px 20px 50px;
-            background:
-                radial-gradient(circle at top right, #123b4a 0%, transparent 35%),
-                radial-gradient(circle at bottom left, #18213f 0%, transparent 35%),
-                #0b0f19;
-        }
 
-        .hero-content {
-            max-width: 800px;
-        }
+<main>
 
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 85px);
-            margin-bottom: 10px;
-        }
+    <!-- HOME -->
 
-        .hero h1 span {
-            color: #00e5ff;
-        }
+    <section id="home">
 
-        .hero h2 {
-            font-size: 25px;
-            color: #aab4c3;
-            margin-bottom: 20px;
-        }
+        <center>
 
-        .hero p {
-            color: #8f9baa;
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
+            <h1>🔥 PRAISE THE SUN 🔥</h1>
 
-        .btn {
-            display: inline-block;
-            padding: 13px 28px;
-            background: #00e5ff;
-            color: #071018;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.25);
-        }
-
-        /* General sections */
-        section {
-            padding: 90px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-        }
-
-        .section-title span {
-            color: #00e5ff;
-        }
-
-        /* About */
-        .about {
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-            color: #aab4c3;
-            font-size: 18px;
-        }
-
-        .about strong {
-            color: white;
-        }
-
-        /* Cards */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .card {
-            background: #111827;
-            border: 1px solid #1f2937;
-            border-radius: 15px;
-            padding: 35px 25px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: #00e5ff;
-            box-shadow: 0 15px 40px rgba(0, 229, 255, 0.08);
-        }
-
-        .card .icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            margin-bottom: 10px;
-            font-size: 22px;
-        }
-
-        .card p {
-            color: #8f9baa;
-        }
-
-        /* Education */
-        .education {
-            max-width: 800px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .education-box {
-            background: #111827;
-            border: 1px solid #1f2937;
-            border-left: 4px solid #00e5ff;
-            padding: 30px;
-            border-radius: 12px;
-        }
-
-        .education-box h3 {
-            font-size: 25px;
-            margin-bottom: 8px;
-        }
-
-        .education-box p {
-            color: #9ca8b7;
-        }
-
-        /* Contact */
-        .contact {
-            text-align: center;
-            background: #0e1420;
-        }
-
-        .contact p {
-            color: #9ca8b7;
-            margin-bottom: 25px;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #080c14;
-            color: #697586;
-            font-size: 14px;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            nav {
-                padding: 15px 5%;
-            }
-
-            nav ul {
-                gap: 12px;
-                font-size: 13px;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 70px 6%;
-            }
-
-            .hero h2 {
-                font-size: 20px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">GAURISH.</div>
-
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#interests">Interests</a></li>
-            <li><a href="#education">Education</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-
-            <h1>Hi, I'm <span>Gaurish</span> 👋</h1>
-
-            <h2>CSE B.Tech Student | Gamer | Footballer </h2>
+            <h2>I AM GAURISH, THE UNKINDLED</h2>
 
             <p>
-                I'm a 2nd year Computer Science Engineering student
-                at JITD who enjoys coding, gaming, watching stuff online,
-                and playing football with friends.
+                <b>CSE B.Tech Student | Gamer | Footballer</b>
             </p>
 
-            <a href="#about" class="btn">Explore My Page</a>
-
-        </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-        <h2 class="section-title">About <span>Me</span></h2>
-
-        <div class="about">
             <p>
-                I'm <strong>Gaurish</strong>, currently pursuing my
-                <strong>B.Tech in Computer Science Engineering</strong>
-                at JITD.
+                A wandering warrior of the digital realm,
+                currently pursuing the path of Computer Science.
+            </p>
+
+            <p>
+                I code.<br>
+                I game.<br>
+                I explore.<br>
+                I fall to bosses and rise again.
             </p>
 
             <br>
 
             <p>
-                I enjoy exploring technology and spending my free time
-                playing games, watching movies and online content,
-                and hanging out with my friends.
+                <a href="#about">🔥 ENTER THE KINGDOM 🔥</a>
             </p>
-        </div>
+
+        </center>
+
     </section>
 
-    <!-- Interests -->
-    <section id="interests">
-        <h2 class="section-title">My <span>Interests</span></h2>
 
-        <div class="cards">
+    <hr>
 
-            <div class="card">
-                <div class="icon">🎮</div>
-                <h3>Gaming</h3>
-                <p>
-                    I love playing games and exploring different
-                    gaming experiences in my free time.
-                </p>
-            </div>
 
-            <div class="card">
-                <div class="icon">🍿</div>
-                <h3>Watching Stuff</h3>
-                <p>
-                    Movies, series, YouTube and random online content
-                    are some of my favorite ways to relax.
-                </p>
-            </div>
+    <!-- ABOUT -->
 
-            <div class="card">
-                <div class="icon">⚽</div>
-                <h3>Football</h3>
-                <p>
-                    I enjoy playing football with my friends and
-                    spending time on the field.
-                </p>
-            </div>
+    <section id="about">
 
-        </div>
-    </section>
+        <center>
 
-    <!-- Education -->
-    <section id="education">
-        <h2 class="section-title">My <span>Education</span></h2>
+            <h1>📜 THE LORE OF GAURISH</h1>
 
-        <div class="education">
+            <p>
+                <i>
+                    "Bearer of the curse, seek souls. Larger, more powerful souls."
+                </i>
+            </p>
 
-            <div class="education-box">
-                <h3>B.Tech — Computer Science Engineering</h3>
+        </center>
 
-                <p>
-                    2nd Year Student
-                </p>
-
-                <p>
-                    JITD
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact">
-        <h2 class="section-title">Let's <span>Connect</span></h2>
+        <h2>⚔️ The Wanderer</h2>
 
         <p>
-            Thanks for visiting my personal page!
+            I am <b>Gaurish</b>, a second-year
+            <b>B.Tech Computer Science Engineering</b> student
+            at <b>JITD</b>.
         </p>
 
-        <a href="mailto:your-email@example.com" class="btn">
-            Say Hello 👋
-        </a>
+        <p>
+            Like a warrior travelling through forgotten kingdoms,
+            I explore the world of technology one challenge at a time.
+        </p>
+
+        <p>
+            My journey involves learning new things, experimenting
+            with technology, playing games, watching movies and
+            online content, and spending time with my companions.
+        </p>
+
+        <br>
+
+        <h2>🔥 My Philosophy</h2>
+
+        <blockquote>
+            "You died."
+        </blockquote>
+
+        <p>
+            But every defeat is another attempt.
+            Every mistake is another lesson.
+            Every challenge is another boss fight.
+        </p>
+
     </section>
 
-    <!-- Footer -->
-    <footer>
-        © 2026 Gaurish. All Rights Reserved.
-    </footer>
 
-</body>
-</html>
+    <hr>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <center>
+
+            <h1>⚔️ CHARACTER ABILITIES</h1>
+
+            <p>
+                <i>
+                    Choose your path carefully, Ashen One.
+                </i>
+            </p>
+
+        </center>
+
+        <h2>🗡️ Intelligence</h2>
+
+        <p>
+            <b>Computer Science</b>
+        </p>
+
+        <p>
+            Exploring programming, software, technology and
+            the mysterious arts of computer science.
+        </p>
+
+        <h2>🛡️ Endurance</h2>
+
+        <p>
+            <b>Persistence</b>
+        </p>
+
+        <p>
+            Learning from failures and continuing the journey
+            even when the boss fight seems impossible.
+        </p>
+
+        <h2>⚔️ Dexterity</h2>
+
+        <p>
+            <b>Gaming & Problem Solving</b>
+        </p>
+
+        <p>
+            Developing quick thinking and adapting to different
+            challenges both inside and outside games.
+        </p>
+
+        <h2>🔥 Faith</h2>
+
+        <p>
+            <b>Football</b>
+        </p>
+
+        <p>
+            Taking the field with friends and fighting for every goal.
+        </p>
+
+    </section>
+
+
+    <hr>
+
+
+    <!-- INTERESTS -->
+
+    <section id="interests">
+
+        <center>
+
+            <h1>🔥 THE THREE PATHS</h1>
+
+            <p>
+                <i>
+                    Every warrior has their own way.
+                </i>
+            </p>
+
+        </center>
+
+        <h2>🎮 PATH OF THE GAMER</h2>
+
+        <p>
+            I enjoy playing games and exploring different worlds,
+            challenges and experiences.
+        </p>
+
+        <p>
+            From defeating difficult bosses to discovering hidden
+            areas, gaming is one of my favorite ways to spend time.
+        </p>
+
+        <br>
+
+        <h2>🍿 PATH OF THE WATCHER</h2>
+
+        <p>
+            Movies, series, YouTube and random online content
+            are my way of resting beside the bonfire after a long journey.
+        </p>
+
+        <br>
+
+        <h2>⚽ PATH OF THE WARRIOR</h2>
+
+        <p>
+            Football is where I take the fight outside the digital realm.
+            Playing with friends, chasing the ball and enjoying the game
+            keeps the adventure alive.
+        </p>
+
+    </section>
+
+
+    <hr>
+
+
+    <!-- EDUCATION -->
+
+    <section id="education">
+
+        <center>
+
+            <h1>🏰 THE ACADEMY OF KNOWLEDGE</h1>
+
+            <p>
+                <i>
+                    "Knowledge is power, but the journey to obtain it
+                    is filled with bosses."
+                </i>
+            </p>
+
+        </center>
+
+        <h2>📜 Current Quest</h2>
+
+        <p>
+            <b>B.Tech — Computer Science Engineering</b>
+        </p>
+
+        <p>
+            Status: <b>2nd Year Student</b>
+        </p>
+
+        <p>
+            Institution: <b>JITD</b>
+        </p>
+
+        <h2>🔥 Current Objective</h2>
+
+        <ol>
+            <li>Learn Computer Science</li>
+            <li>Improve programming skills</li>
+            <li>Explore new technologies</li>
+            <li>Complete difficult quests</li>
+            <li>Survive the semester bosses</li>
+        </ol>
+
+    </section>
+
+
+    <hr>
+
+
+    <!-- INVENTORY -->
+
+    <section>
+
+        <center>
+
+            <h1>🎒 INVENTORY</h1>
+
+        </center>
+
+        <ul>
+            <li>⚔️ Keyboard — Primary Weapon</li>
+            <li>🛡️ Laptop — Shield of Knowledge</li>
+            <li>🔥 Bonfire — Source of Rest</li>
+            <li>🎮 Controller — Gaming Weapon</li>
+            <li>⚽ Football — Field Weapon</li>
+            <li>☕ Motivation — Limited Consumable</li>
+        </ul>
+
+    </section>
+
+
+    <hr>
+
+
+    <!-- BOSS BATTLES -->
+
+    <section>
+
+        <center>
+
+            <h1>💀 BOSSES DEFEATED</h1>
+
+            <p>
+                <i>
+                    "The hardest battles are the ones within."
+                </i>
+            </p>
+
+        </center>
+
+        <ul>
+            <li>💀 Early Morning Classes</li>
+            <li>💀 Difficult Assignments</li>
+            <li>💀 Debugging at 2 AM</li>
+            <li>💀 Semester Examinations</li>
+            <li>💀 Impossible Programming Errors</li>
+        </ul>
+
+        <p>
+            <b>Boss Status:</b> Still fighting.
+        </p>
+
+    </section>
+
+
+    <hr>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <center>
+
+            <h1>🔥 SUMMON GAURISH</h1>
+
+            <p>
+                The bonfire is lit.
+            </p>
+
+            <p>
+                If you wish to begin a conversation,
+                send a summon sign.
+            </p>
+
+            <br>
+
+            <a href="mailto:your-email@example.com">
+                🔥 PLACE YOUR SUMMON SIGN 🔥
+            </a>
+
+            <br><br>
+
+            <p>
+                <i>
+                    "May the flames guide thee."
+                </i>
+            </p>
+
+        </center>
+
+    </section>
+
+</main>
+
+
+<hr>
+
+
+<footer>
+
+    <center>
+
+        <p>
+            🔥 BONFIRE LIT 🔥
+        </p>
+
+        <p>
+            © 2026 Gaurish — The Unkindled
+        </p>
+
+        <p>
+            <i>
+                "Ash seeketh embers."
+            </i>
+        </p>
+
+    </center>
+
+</footer>
+
+</body> </html>

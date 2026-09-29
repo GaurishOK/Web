@@ -81,7 +81,8 @@
             background: var(--gold);
         }
 
-        /* NAVIGATION */
+
+        /* ================= NAVIGATION ================= */
 
         nav {
             position: fixed;
@@ -143,7 +144,8 @@
             left: 0;
         }
 
-        /* GENERAL */
+
+        /* ================= GENERAL ================= */
 
         section {
             padding: 110px 8%;
@@ -185,7 +187,8 @@
             margin: 20px auto;
         }
 
-        /* HERO */
+
+        /* ================= HERO ================= */
 
         .hero {
             min-height: 100vh;
@@ -242,10 +245,6 @@
             margin-bottom: 15px;
         }
 
-        .hero h1 span {
-            color: var(--gold);
-        }
-
         .hero h2 {
             color: var(--muted);
             font-size: clamp(16px, 3vw, 24px);
@@ -288,7 +287,8 @@
             transform: translateY(-3px);
         }
 
-        /* ABOUT */
+
+        /* ================= ABOUT ================= */
 
         .about-container {
             max-width: 900px;
@@ -330,7 +330,8 @@
             color: var(--gold);
         }
 
-        /* SKILLS */
+
+        /* ================= SKILLS ================= */
 
         .skills {
             max-width: 950px;
@@ -380,7 +381,8 @@
             width: 65%;
         }
 
-        /* INTEREST CARDS */
+
+        /* ================= INTEREST CARDS ================= */
 
         .cards {
             max-width: 1150px;
@@ -435,7 +437,8 @@
             font-size: 14px;
         }
 
-        /* BOSS */
+
+        /* ================= BOSS BATTLES ================= */
 
         .boss-section {
             background:
@@ -486,7 +489,124 @@
             color: #873226;
         }
 
-        /* EDUCATION */
+
+        /* ================= ACHIEVEMENT ================= */
+
+        .achievement {
+            background:
+                radial-gradient(circle at center,
+                    rgba(201, 163, 91, .10),
+                    transparent 55%);
+        }
+
+        .achievement-box {
+            max-width: 850px;
+            margin: auto;
+            padding: 55px 45px;
+            text-align: center;
+            background:
+                linear-gradient(145deg,
+                    rgba(32, 25, 17, .97),
+                    rgba(7, 6, 5, .98));
+            border: 1px solid #806333;
+            position: relative;
+            box-shadow:
+                0 0 35px rgba(0, 0, 0, .8),
+                inset 0 0 50px rgba(201, 163, 91, .04);
+        }
+
+        .achievement-box::before,
+        .achievement-box::after {
+            content: "✦";
+            position: absolute;
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        .achievement-box::before {
+            top: 15px;
+            left: 20px;
+        }
+
+        .achievement-box::after {
+            bottom: 15px;
+            right: 20px;
+        }
+
+        .achievement-icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 18px rgba(201, 163, 91, .5));
+            animation: achievementGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes achievementGlow {
+            from {
+                filter: drop-shadow(0 0 5px rgba(201, 163, 91, .3));
+            }
+
+            to {
+                filter: drop-shadow(0 0 25px rgba(201, 163, 91, .7));
+            }
+        }
+
+        .achievement-box h3 {
+            color: #e0b866;
+            font-size: 32px;
+            letter-spacing: 5px;
+            margin-bottom: 8px;
+        }
+
+        .achievement-subtitle {
+            color: #777067;
+            font-size: 12px;
+            letter-spacing: 4px;
+        }
+
+        .achievement-line {
+            width: 170px;
+            height: 1px;
+            background: linear-gradient(to right,
+                    transparent,
+                    var(--gold),
+                    transparent);
+            margin: 25px auto;
+        }
+
+        .achievement-box p {
+            color: #999084;
+            margin-bottom: 18px;
+        }
+
+        .achievement-box strong {
+            color: var(--gold);
+        }
+
+        .achievement-status {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 12px 20px;
+            border: 1px solid #633b26;
+            color: #d46b36;
+            font-size: 12px;
+            letter-spacing: 2px;
+            background: rgba(80, 30, 15, .15);
+        }
+
+        .achievement-status span {
+            color: #5d554b;
+            margin: 0 8px;
+        }
+
+        .achievement-quote {
+            font-family: 'MedievalSharp', cursive;
+            color: #c4b394 !important;
+            font-size: 20px;
+            margin-top: 25px;
+        }
+
+
+        /* ================= EDUCATION ================= */
 
         .education {
             max-width: 850px;
@@ -538,7 +658,8 @@
             letter-spacing: 2px;
         }
 
-        /* CONTACT */
+
+        /* ================= CONTACT ================= */
 
         .contact {
             text-align: center;
@@ -553,7 +674,8 @@
             margin-bottom: 30px;
         }
 
-        /* FOOTER */
+
+        /* ================= FOOTER ================= */
 
         footer {
             text-align: center;
@@ -572,7 +694,8 @@
             animation: fireGlow 2s ease-in-out infinite alternate;
         }
 
-        /* MOBILE */
+
+        /* ================= MOBILE ================= */
 
         @media(max-width:800px) {
 
@@ -609,7 +732,8 @@
             }
 
             .education-box,
-            .boss {
+            .boss,
+            .achievement-box {
                 padding: 30px 20px;
             }
 
@@ -621,6 +745,16 @@
                 flex-direction: column;
                 gap: 10px;
                 text-align: center;
+            }
+
+            .achievement-box h3 {
+                font-size: 24px;
+                letter-spacing: 3px;
+            }
+
+            .achievement-status {
+                font-size: 10px;
+                line-height: 2;
             }
         }
 
@@ -648,7 +782,8 @@
 
 <body>
 
-    <!-- NAVIGATION -->
+
+    <!-- ================= NAVIGATION ================= -->
 
     <nav>
 
@@ -661,6 +796,8 @@
             <li><a href="#about">LORE</a></li>
             <li><a href="#skills">ABILITIES</a></li>
             <li><a href="#interests">INTERESTS</a></li>
+            <li><a href="#bosses">BOSS BATTLES</a></li>
+            <li><a href="#achievement">ACHIEVEMENT</a></li>
             <li><a href="#education">JOURNEY</a></li>
             <li><a href="#contact">SUMMON</a></li>
         </ul>
@@ -668,7 +805,7 @@
     </nav>
 
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
 
     <section class="hero" id="home">
 
@@ -702,7 +839,7 @@
     </section>
 
 
-    <!-- ABOUT -->
+    <!-- ================= ABOUT ================= -->
 
     <section id="about">
 
@@ -717,6 +854,7 @@
             <p>Bearer of knowledge. Seeker of embers.</p>
 
         </div>
+
 
         <div class="about-container">
 
@@ -748,7 +886,7 @@
     </section>
 
 
-    <!-- SKILLS -->
+    <!-- ================= SKILLS ================= -->
 
     <section id="skills">
 
@@ -763,6 +901,7 @@
             <p>Choose your path wisely, Ashen One.</p>
 
         </div>
+
 
         <div class="skills">
 
@@ -826,7 +965,7 @@
     </section>
 
 
-    <!-- INTERESTS -->
+    <!-- ================= INTERESTS ================= -->
 
     <section id="interests">
 
@@ -892,9 +1031,9 @@
     </section>
 
 
-    <!-- BOSS BATTLES -->
+    <!-- ================= BOSS BATTLES ================= -->
 
-    <section class="boss-section">
+    <section class="boss-section" id="bosses">
 
         <div class="section-title">
 
@@ -940,7 +1079,73 @@
     </section>
 
 
-    <!-- EDUCATION -->
+    <!-- ================= ACHIEVEMENT ================= -->
+
+    <section class="achievement" id="achievement">
+
+        <div class="section-title">
+
+            <span class="small">Legendary Deed</span>
+
+            <h2>ACHIEVEMENT UNLOCKED</h2>
+
+            <div class="divider"></div>
+
+            <p>The First Flame has fallen.</p>
+
+        </div>
+
+
+        <div class="achievement-box">
+
+            <div class="achievement-icon">
+                🏆
+            </div>
+
+            <h3>THE AGE OF DARK</h3>
+
+            <p class="achievement-subtitle">
+                DARK SOULS — LORDRAN
+            </p>
+
+            <div class="achievement-line"></div>
+
+            <p>
+                The Chosen Undead journeyed through Lordran,
+                overcame countless foes, and stood before the
+                Lord of Cinder.
+            </p>
+
+            <p>
+                <strong>Gwyn, Lord of Cinder</strong> was defeated.
+            </p>
+
+            <p>
+                The First Flame was not linked.
+                The Age of Fire was allowed to fade,
+                and the <strong>Age of Dark</strong> was chosen.
+            </p>
+
+            <div class="achievement-status">
+
+                ⚔️ GWYN DEFEATED
+
+                <span>•</span>
+
+                🔥 AGE OF DARK CHOSEN
+
+            </div>
+
+            <p class="achievement-quote">
+                "The Age of Fire is ending."
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EDUCATION ================= -->
 
     <section id="education">
 
@@ -984,7 +1189,7 @@
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- ================= CONTACT ================= -->
 
     <section class="contact" id="contact">
 
@@ -1000,6 +1205,7 @@
 
         </div>
 
+
         <p>
             If you wish to begin a conversation,
             leave your summon sign.
@@ -1009,14 +1215,19 @@
             "May the flames guide thee."
         </p>
 
-        <a href="https://github.com/GaurishOK" class="btn">
+
+        <!-- CHANGE YOUR USERNAME HERE -->
+
+        <a href="https://github.com/GaurishOK" class="btn" target="_blank" rel="noopener noreferrer">
+
             🔥 PLACE SUMMON SIGN
+
         </a>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 

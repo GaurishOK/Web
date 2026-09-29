@@ -1,420 +1,1043 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gaurish | The Unkindled</title>
+<!DOCTYPE html>
+<html lang="en">
 
-</head> <body bgcolor="#0b0b0b" text="#d6d0c4">
-<header>
-    <center>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <h1>⚔️ GAURISH ⚔️</h1>
+    <title>Gaurish | The Unkindled</title>
 
-        <h2>THE UNKINDLED</h2>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=MedievalSharp&display=swap');
 
-        <p>
-            <i>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --black: #050505;
+            --dark: #0b0a09;
+            --brown: #211810;
+            --gold: #c9a35b;
+            --bright-gold: #e8c978;
+            --ember: #ff641c;
+            --red: #8b2e24;
+            --text: #d6d0c4;
+            --muted: #8f897e;
+            --border: #3b2d20;
+        }
+
+        body {
+            font-family: 'Cinzel', serif;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(120, 70, 25, .18), transparent 35%),
+                linear-gradient(rgba(0, 0, 0, .88), rgba(0, 0, 0, .96)),
+                #080706;
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .12;
+            background-image:
+                radial-gradient(circle, #d49a45 1px, transparent 1px),
+                radial-gradient(circle, #fff 1px, transparent 1px);
+            background-size: 90px 90px, 140px 140px;
+            animation: drift 18s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes drift {
+            from {
+                background-position: 0 0, 0 0;
+            }
+
+            to {
+                background-position: 100px 500px, -200px 300px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 9px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #55442e;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold);
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 7%;
+            background: rgba(4, 4, 4, .9);
+            backdrop-filter: blur(12px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(201, 163, 91, .25);
+        }
+
+        .logo {
+            color: var(--gold);
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            color: var(--ember);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: #aaa398;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            transition: .3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            bottom: -6px;
+            left: 50%;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--bright-gold);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 110px 8%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title .small {
+            color: var(--ember);
+            font-size: 12px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--gold);
+            margin: 8px 0;
+            letter-spacing: 3px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+            font-family: 'MedievalSharp', cursive;
+            font-size: 18px;
+        }
+
+        .divider {
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(to right,
+                    transparent,
+                    var(--gold),
+                    transparent);
+            margin: 20px auto;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 70px;
+            background:
+                radial-gradient(circle at center bottom,
+                    rgba(170, 63, 14, .2),
+                    transparent 30%),
+                radial-gradient(circle at center,
+                    rgba(87, 59, 29, .12),
+                    transparent 50%);
+        }
+
+        .hero-content {
+            max-width: 950px;
+        }
+
+        .bonfire {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            filter: drop-shadow(0 0 18px #ff5a00);
+            animation: fireGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes fireGlow {
+            from {
+                filter: drop-shadow(0 0 8px #ff5a00);
+                transform: scale(.97);
+            }
+
+            to {
+                filter: drop-shadow(0 0 30px #ff7b00);
+                transform: scale(1.05);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 9vw, 100px);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #e8e0d2;
+            text-shadow:
+                0 0 20px rgba(255, 255, 255, .08),
+                4px 4px 0 #16120e;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        .hero h2 {
+            color: var(--muted);
+            font-size: clamp(16px, 3vw, 24px);
+            letter-spacing: 5px;
+            font-weight: 400;
+        }
+
+        .quote {
+            font-family: 'MedievalSharp', cursive;
+            color: #a59c8d;
+            font-size: 19px;
+            margin: 30px auto;
+        }
+
+        .hero-description {
+            max-width: 680px;
+            margin: 25px auto 35px;
+            color: #928b80;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            color: #080706;
+            background: linear-gradient(135deg, #d6ae62, #9b7134);
+            padding: 13px 30px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border: 1px solid #e4c37e;
+            transition: .35s;
+        }
+
+        .btn:hover {
+            color: white;
+            background: linear-gradient(135deg, #e16b23, #843017);
+            box-shadow:
+                0 0 15px rgba(255, 92, 20, .4),
+                0 0 40px rgba(255, 92, 20, .15);
+            transform: translateY(-3px);
+        }
+
+        /* ABOUT */
+
+        .about-container {
+            max-width: 900px;
+            margin: auto;
+            background:
+                linear-gradient(135deg,
+                    rgba(38, 29, 21, .8),
+                    rgba(12, 10, 8, .9));
+            border: 1px solid var(--border);
+            padding: 50px;
+            position: relative;
+        }
+
+        .about-container::before,
+        .about-container::after {
+            content: "◆";
+            position: absolute;
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        .about-container::before {
+            top: 12px;
+            left: 15px;
+        }
+
+        .about-container::after {
+            bottom: 12px;
+            right: 15px;
+        }
+
+        .about-container p {
+            color: #aaa297;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-container strong {
+            color: var(--gold);
+        }
+
+        /* SKILLS */
+
+        .skills {
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .skill {
+            margin-bottom: 30px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            color: #bdb5a7;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .skill-bar {
+            height: 7px;
+            background: #1a1510;
+            border: 1px solid #392c1e;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: linear-gradient(to right,
+                    #70401e,
+                    var(--gold),
+                    #e2b45e);
+            box-shadow: 0 0 10px rgba(201, 163, 91, .25);
+        }
+
+        .level-90 {
+            width: 90%;
+        }
+
+        .level-80 {
+            width: 80%;
+        }
+
+        .level-75 {
+            width: 75%;
+        }
+
+        .level-65 {
+            width: 65%;
+        }
+
+        /* INTEREST CARDS */
+
+        .cards {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background:
+                linear-gradient(145deg,
+                    rgba(32, 25, 18, .95),
+                    rgba(10, 9, 8, .95));
+            border: 1px solid var(--border);
+            padding: 35px 25px;
+            text-align: center;
+            transition: .4s;
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 7px;
+            border: 1px solid rgba(201, 163, 91, .08);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, .7),
+                0 0 20px rgba(201, 163, 91, .08);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            color: var(--gold);
+            font-size: 21px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .card p {
+            color: #888178;
+            font-size: 14px;
+        }
+
+        /* BOSS */
+
+        .boss-section {
+            background:
+                radial-gradient(circle at center,
+                    rgba(94, 23, 17, .12),
+                    transparent 50%);
+        }
+
+        .boss {
+            max-width: 950px;
+            margin: auto;
+            border: 1px solid #3e241c;
+            background: rgba(16, 9, 8, .9);
+            padding: 40px;
+        }
+
+        .boss-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #38231c;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .boss-header h3 {
+            color: #b84932;
+            letter-spacing: 3px;
+        }
+
+        .boss-header span {
+            color: #6e655c;
+            font-size: 12px;
+        }
+
+        .boss ul {
+            list-style: none;
+        }
+
+        .boss li {
+            padding: 12px 0;
+            color: #8e8479;
+            border-bottom: 1px solid rgba(255, 255, 255, .03);
+        }
+
+        .boss li::before {
+            content: "☠ ";
+            color: #873226;
+        }
+
+        /* EDUCATION */
+
+        .education {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .education-box {
+            border: 1px solid var(--border);
+            background: rgba(19, 15, 11, .9);
+            padding: 45px;
+            text-align: center;
+            position: relative;
+        }
+
+        .education-box::before {
+            content: "✦";
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: var(--gold);
+        }
+
+        .education-box::after {
+            content: "✦";
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            color: var(--gold);
+        }
+
+        .education-box h3 {
+            color: var(--gold);
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .education-box p {
+            color: #91897c;
+            margin: 5px;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--ember);
+            border: 1px solid #69321e;
+            padding: 7px 18px;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            background:
+                radial-gradient(circle at center bottom,
+                    rgba(151, 61, 17, .15),
+                    transparent 40%);
+        }
+
+        .contact p {
+            color: #91897d;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: #030303;
+            border-top: 1px solid #211a14;
+            color: #625c54;
+            font-size: 12px;
+        }
+
+        footer .fire {
+            color: var(--ember);
+            font-size: 25px;
+            display: block;
+            margin-bottom: 10px;
+            animation: fireGlow 2s ease-in-out infinite alternate;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:800px) {
+
+            nav {
+                padding: 15px 5%;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 10px;
+            }
+
+            .hero {
+                padding-top: 150px;
+            }
+
+            .hero h1 {
+                letter-spacing: 4px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                padding: 30px 20px;
+            }
+
+            .education-box,
+            .boss {
+                padding: 30px 20px;
+            }
+
+            section {
+                padding: 80px 6%;
+            }
+
+            .boss-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+
+        @media(max-width:450px) {
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero h2 {
+                font-size: 15px;
+                letter-spacing: 3px;
+            }
+
+            nav ul {
+                gap: 9px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <div class="logo">
+            GAURISH<span>.</span>
+        </div>
+
+        <ul>
+            <li><a href="#home">BONFIRE</a></li>
+            <li><a href="#about">LORE</a></li>
+            <li><a href="#skills">ABILITIES</a></li>
+            <li><a href="#interests">INTERESTS</a></li>
+            <li><a href="#education">JOURNEY</a></li>
+            <li><a href="#contact">SUMMON</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="bonfire">🔥</div>
+
+            <h1>GAURISH</h1>
+
+            <h2>THE UNKINDLED</h2>
+
+            <div class="divider"></div>
+
+            <p class="quote">
                 "In a world swallowed by darkness,<br>
                 even a faint ember can keep the flame alive."
-            </i>
-        </p>
-
-        <hr>
-
-        <nav>
-            <a href="#home">🔥 Bonfire</a> |
-            <a href="#about">📜 Lore</a> |
-            <a href="#skills">⚔️ Abilities</a> |
-            <a href="#interests">🛡️ Adventures</a> |
-            <a href="#education">🏰 Journey</a> |
-            <a href="#contact">💀 Summon Me</a>
-        </nav>
-
-        <hr>
-
-    </center>
-</header>
-
-
-<main>
-
-    <!-- HOME -->
-
-    <section id="home">
-
-        <center>
-
-            <h1>🔥 PRAISE THE SUN 🔥</h1>
-
-            <h2>I AM GAURISH, THE UNKINDLED</h2>
-
-            <p>
-                <b>CSE B.Tech Student | Gamer | Footballer</b>
             </p>
 
-            <p>
-                A wandering warrior of the digital realm,
-                currently pursuing the path of Computer Science.
+            <p class="hero-description">
+                A second-year Computer Science Engineering student,
+                wandering through the endless kingdoms of technology,
+                gaming and adventure.
             </p>
 
-            <p>
-                I code.<br>
-                I game.<br>
-                I explore.<br>
-                I fall to bosses and rise again.
-            </p>
+            <a href="#about" class="btn">
+                ENTER THE KINGDOM
+            </a>
 
-            <br>
-
-            <p>
-                <a href="#about">🔥 ENTER THE KINGDOM 🔥</a>
-            </p>
-
-        </center>
+        </div>
 
     </section>
-
-
-    <hr>
 
 
     <!-- ABOUT -->
 
     <section id="about">
 
-        <center>
+        <div class="section-title">
 
-            <h1>📜 THE LORE OF GAURISH</h1>
+            <span class="small">The Forgotten Lore</span>
+
+            <h2>THE WANDERER</h2>
+
+            <div class="divider"></div>
+
+            <p>Bearer of knowledge. Seeker of embers.</p>
+
+        </div>
+
+        <div class="about-container">
 
             <p>
-                <i>
-                    "Bearer of the curse, seek souls. Larger, more powerful souls."
-                </i>
+                I am <strong>Gaurish</strong>, a second-year
+                <strong>B.Tech Computer Science Engineering</strong>
+                student at <strong>JITD</strong>.
             </p>
 
-        </center>
+            <p>
+                My journey through the world of technology is much like
+                travelling through a forgotten kingdom — filled with
+                mysteries, challenges, unexpected enemies and discoveries.
+            </p>
 
-        <h2>⚔️ The Wanderer</h2>
+            <p>
+                I enjoy exploring technology, playing games, watching
+                movies and online content, and spending time with friends.
+            </p>
 
-        <p>
-            I am <b>Gaurish</b>, a second-year
-            <b>B.Tech Computer Science Engineering</b> student
-            at <b>JITD</b>.
-        </p>
+            <p>
+                Every bug is another enemy.
+                Every assignment is another boss.
+                Every failure is another chance to rise.
+            </p>
 
-        <p>
-            Like a warrior travelling through forgotten kingdoms,
-            I explore the world of technology one challenge at a time.
-        </p>
-
-        <p>
-            My journey involves learning new things, experimenting
-            with technology, playing games, watching movies and
-            online content, and spending time with my companions.
-        </p>
-
-        <br>
-
-        <h2>🔥 My Philosophy</h2>
-
-        <blockquote>
-            "You died."
-        </blockquote>
-
-        <p>
-            But every defeat is another attempt.
-            Every mistake is another lesson.
-            Every challenge is another boss fight.
-        </p>
+        </div>
 
     </section>
-
-
-    <hr>
 
 
     <!-- SKILLS -->
 
     <section id="skills">
 
-        <center>
+        <div class="section-title">
 
-            <h1>⚔️ CHARACTER ABILITIES</h1>
+            <span class="small">Character Attributes</span>
 
-            <p>
-                <i>
-                    Choose your path carefully, Ashen One.
-                </i>
-            </p>
+            <h2>ABILITIES</h2>
 
-        </center>
+            <div class="divider"></div>
 
-        <h2>🗡️ Intelligence</h2>
+            <p>Choose your path wisely, Ashen One.</p>
 
-        <p>
-            <b>Computer Science</b>
-        </p>
+        </div>
 
-        <p>
-            Exploring programming, software, technology and
-            the mysterious arts of computer science.
-        </p>
+        <div class="skills">
 
-        <h2>🛡️ Endurance</h2>
+            <div class="skill">
 
-        <p>
-            <b>Persistence</b>
-        </p>
+                <div class="skill-info">
+                    <span>⚔️ Computer Science</span>
+                    <span>90%</span>
+                </div>
 
-        <p>
-            Learning from failures and continuing the journey
-            even when the boss fight seems impossible.
-        </p>
+                <div class="skill-bar">
+                    <div class="skill-level level-90"></div>
+                </div>
 
-        <h2>⚔️ Dexterity</h2>
+            </div>
 
-        <p>
-            <b>Gaming & Problem Solving</b>
-        </p>
 
-        <p>
-            Developing quick thinking and adapting to different
-            challenges both inside and outside games.
-        </p>
+            <div class="skill">
 
-        <h2>🔥 Faith</h2>
+                <div class="skill-info">
+                    <span>🎮 Gaming</span>
+                    <span>80%</span>
+                </div>
 
-        <p>
-            <b>Football</b>
-        </p>
+                <div class="skill-bar">
+                    <div class="skill-level level-80"></div>
+                </div>
 
-        <p>
-            Taking the field with friends and fighting for every goal.
-        </p>
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-info">
+                    <span>⚽ Football</span>
+                    <span>75%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-level level-75"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skill">
+
+                <div class="skill-info">
+                    <span>🛡️ Persistence</span>
+                    <span>65%</span>
+                </div>
+
+                <div class="skill-bar">
+                    <div class="skill-level level-65"></div>
+                </div>
+
+            </div>
+
+        </div>
 
     </section>
-
-
-    <hr>
 
 
     <!-- INTERESTS -->
 
     <section id="interests">
 
-        <center>
+        <div class="section-title">
 
-            <h1>🔥 THE THREE PATHS</h1>
+            <span class="small">Paths of the Warrior</span>
 
-            <p>
-                <i>
-                    Every warrior has their own way.
-                </i>
-            </p>
+            <h2>INTERESTS</h2>
 
-        </center>
+            <div class="divider"></div>
 
-        <h2>🎮 PATH OF THE GAMER</h2>
+            <p>Three paths. One journey.</p>
 
-        <p>
-            I enjoy playing games and exploring different worlds,
-            challenges and experiences.
-        </p>
+        </div>
 
-        <p>
-            From defeating difficult bosses to discovering hidden
-            areas, gaming is one of my favorite ways to spend time.
-        </p>
 
-        <br>
+        <div class="cards">
 
-        <h2>🍿 PATH OF THE WATCHER</h2>
+            <div class="card">
 
-        <p>
-            Movies, series, YouTube and random online content
-            are my way of resting beside the bonfire after a long journey.
-        </p>
+                <div class="card-icon">🎮</div>
 
-        <br>
+                <h3>GAMING</h3>
 
-        <h2>⚽ PATH OF THE WARRIOR</h2>
+                <p>
+                    Exploring dangerous worlds, defeating bosses,
+                    discovering secrets and experiencing different
+                    gaming adventures.
+                </p>
 
-        <p>
-            Football is where I take the fight outside the digital realm.
-            Playing with friends, chasing the ball and enjoying the game
-            keeps the adventure alive.
-        </p>
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">🍿</div>
+
+                <h3>WATCHING</h3>
+
+                <p>
+                    Movies, series, YouTube and random online content —
+                    the perfect rest after surviving another difficult quest.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">⚽</div>
+
+                <h3>FOOTBALL</h3>
+
+                <p>
+                    Leaving the digital kingdom behind and stepping onto
+                    the field to battle alongside friends.
+                </p>
+
+            </div>
+
+        </div>
 
     </section>
 
 
-    <hr>
+    <!-- BOSS BATTLES -->
+
+    <section class="boss-section">
+
+        <div class="section-title">
+
+            <span class="small">Enemies Defeated</span>
+
+            <h2>BOSS BATTLES</h2>
+
+            <div class="divider"></div>
+
+            <p>The journey never truly ends.</p>
+
+        </div>
+
+
+        <div class="boss">
+
+            <div class="boss-header">
+
+                <h3>☠ GAURISH'S BOSS LOG</h3>
+
+                <span>STATUS: STILL FIGHTING</span>
+
+            </div>
+
+            <ul>
+
+                <li>Early Morning Classes</li>
+
+                <li>Difficult Programming Assignments</li>
+
+                <li>Debugging at 2 AM</li>
+
+                <li>Semester Examinations</li>
+
+                <li>Impossible Coding Errors</li>
+
+                <li>Deadlines Approaching at Maximum Speed</li>
+
+            </ul>
+
+        </div>
+
+    </section>
 
 
     <!-- EDUCATION -->
 
     <section id="education">
 
-        <center>
+        <div class="section-title">
 
-            <h1>🏰 THE ACADEMY OF KNOWLEDGE</h1>
+            <span class="small">The Academy</span>
 
-            <p>
-                <i>
-                    "Knowledge is power, but the journey to obtain it
-                    is filled with bosses."
-                </i>
-            </p>
+            <h2>THE JOURNEY</h2>
 
-        </center>
+            <div class="divider"></div>
 
-        <h2>📜 Current Quest</h2>
+            <p>The path toward knowledge.</p>
 
-        <p>
-            <b>B.Tech — Computer Science Engineering</b>
-        </p>
-
-        <p>
-            Status: <b>2nd Year Student</b>
-        </p>
-
-        <p>
-            Institution: <b>JITD</b>
-        </p>
-
-        <h2>🔥 Current Objective</h2>
-
-        <ol>
-            <li>Learn Computer Science</li>
-            <li>Improve programming skills</li>
-            <li>Explore new technologies</li>
-            <li>Complete difficult quests</li>
-            <li>Survive the semester bosses</li>
-        </ol>
-
-    </section>
+        </div>
 
 
-    <hr>
+        <div class="education">
 
+            <div class="education-box">
 
-    <!-- INVENTORY -->
+                <h3>
+                    B.Tech — Computer Science Engineering
+                </h3>
 
-    <section>
+                <p>
+                    JITD
+                </p>
 
-        <center>
+                <p>
+                    Computer Science Engineering
+                </p>
 
-            <h1>🎒 INVENTORY</h1>
+                <span class="status">
+                    2ND YEAR — QUEST ACTIVE
+                </span>
 
-        </center>
+            </div>
 
-        <ul>
-            <li>⚔️ Keyboard — Primary Weapon</li>
-            <li>🛡️ Laptop — Shield of Knowledge</li>
-            <li>🔥 Bonfire — Source of Rest</li>
-            <li>🎮 Controller — Gaming Weapon</li>
-            <li>⚽ Football — Field Weapon</li>
-            <li>☕ Motivation — Limited Consumable</li>
-        </ul>
+        </div>
 
     </section>
-
-
-    <hr>
-
-
-    <!-- BOSS BATTLES -->
-
-    <section>
-
-        <center>
-
-            <h1>💀 BOSSES DEFEATED</h1>
-
-            <p>
-                <i>
-                    "The hardest battles are the ones within."
-                </i>
-            </p>
-
-        </center>
-
-        <ul>
-            <li>💀 Early Morning Classes</li>
-            <li>💀 Difficult Assignments</li>
-            <li>💀 Debugging at 2 AM</li>
-            <li>💀 Semester Examinations</li>
-            <li>💀 Impossible Programming Errors</li>
-        </ul>
-
-        <p>
-            <b>Boss Status:</b> Still fighting.
-        </p>
-
-    </section>
-
-
-    <hr>
 
 
     <!-- CONTACT -->
 
-    <section id="contact">
+    <section class="contact" id="contact">
 
-        <center>
+        <div class="section-title">
 
-            <h1>🔥 SUMMON GAURISH</h1>
+            <span class="small">Summon Sign</span>
 
-            <p>
-                The bonfire is lit.
-            </p>
+            <h2>LET'S CONNECT</h2>
 
-            <p>
-                If you wish to begin a conversation,
-                send a summon sign.
-            </p>
+            <div class="divider"></div>
 
-            <br>
+            <p>The bonfire is lit.</p>
 
-            <a href="mailto:your-email@example.com">
-                🔥 PLACE YOUR SUMMON SIGN 🔥
-            </a>
+        </div>
 
-            <br><br>
+        <p>
+            If you wish to begin a conversation,
+            leave your summon sign.
+        </p>
 
-            <p>
-                <i>
-                    "May the flames guide thee."
-                </i>
-            </p>
+        <p class="quote">
+            "May the flames guide thee."
+        </p>
 
-        </center>
+        <a href="mailto:your-email@example.com" class="btn">
+            🔥 PLACE SUMMON SIGN
+        </a>
 
     </section>
 
-</main>
 
+    <!-- FOOTER -->
 
-<hr>
+    <footer>
 
-
-<footer>
-
-    <center>
+        <span class="fire">🔥</span>
 
         <p>
-            🔥 BONFIRE LIT 🔥
+            THE BONFIRE REMAINS LIT
         </p>
 
         <p>
-            © 2026 Gaurish — The Unkindled
+            © 2026 GAURISH — THE UNKINDLED
         </p>
 
         <p>
             <i>
-                "Ash seeketh embers."
+                Ash seeketh embers.
             </i>
         </p>
 
-    </center>
+    </footer>
 
-</footer>
+</body>
 
-</body> </html>
+</html>

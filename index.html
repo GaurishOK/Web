@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAURISH // UAC TERMINAL</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@400;500;600;700&display=swap');
 
-    <title>Gaurish | The Unkindled</title>
-
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root {
+    --black: #050607;
+    --black-2: #0a0c0d;
+    --panel: #0d1011;
+    --panel-2: #121516;
+    --red: #b51f20;
+    --red-hot: #e53a27;
+    --orange: #ff6a21;
+    --green: #8ca94b;
+    --text: #c5c6c1;
+    --muted: #6e716d;
+    --line: #292d2d;
+    --white: #e8e8e2;
+}
 
 * {
     margin: 0;
@@ -17,39 +29,19 @@
     scroll-behavior: smooth;
 }
 
-:root {
-    --black: #02030a;
-    --space: #060816;
-    --space-2: #0b1024;
-    --panel: rgba(10, 15, 38, .72);
-    --panel-strong: rgba(7, 10, 28, .92);
-    --violet: #9b7cff;
-    --purple: #704cff;
-    --cyan: #55e7ff;
-    --blue: #397bff;
-    --pink: #e56cff;
-    --white: #edf2ff;
-    --text: #c6cce2;
-    --muted: #7f89a8;
-    --border: rgba(130, 120, 255, .25);
-    --glow: rgba(91, 117, 255, .25);
-}
-
 html {
     background: var(--black);
 }
 
 body {
-    font-family: 'Space Grotesk', sans-serif;
-    background:
-        radial-gradient(circle at 15% 15%, rgba(94, 55, 205, .16), transparent 28%),
-        radial-gradient(circle at 85% 25%, rgba(40, 155, 255, .12), transparent 30%),
-        radial-gradient(circle at 50% 75%, rgba(206, 63, 255, .08), transparent 32%),
-        linear-gradient(180deg, #02030a 0%, #050816 48%, #02030a 100%);
     color: var(--text);
-    line-height: 1.7;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(174, 35, 25, .12), transparent 28%),
+        linear-gradient(rgba(5,6,7,.9), rgba(5,6,7,.97)),
+        #050607;
+    font-family: 'Roboto Mono', monospace;
+    line-height: 1.6;
     overflow-x: hidden;
-    position: relative;
 }
 
 body::before {
@@ -57,373 +49,333 @@ body::before {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: -2;
-    opacity: .75;
-    background:
-        radial-gradient(circle at 20% 30%, rgba(255,255,255,.9) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 70% 65%, rgba(255,255,255,.7) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 40% 80%, rgba(133,198,255,.8) 0 1px, transparent 1.5px),
-        radial-gradient(circle at 90% 10%, rgba(210,150,255,.8) 0 1px, transparent 1.5px);
-    background-size: 180px 180px, 240px 240px, 310px 310px, 420px 420px;
-    animation: stars 28s linear infinite;
+    z-index: 20;
+    opacity: .045;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 3px,
+        #fff 4px
+    );
 }
 
 body::after {
     content: "";
     position: fixed;
-    width: 75vw;
-    height: 75vw;
-    max-width: 900px;
-    max-height: 900px;
-    left: 50%;
-    top: 48%;
-    transform: translate(-50%, -50%);
+    inset: 0;
     pointer-events: none;
-    z-index: -3;
-    border-radius: 50%;
+    z-index: -1;
     background:
-        radial-gradient(circle,
-            transparent 0 34%,
-            rgba(93, 75, 255, .025) 45%,
-            rgba(205, 71, 255, .055) 57%,
-            transparent 70%);
-    filter: blur(15px);
+        radial-gradient(circle at 15% 45%, rgba(133, 145, 66, .045), transparent 25%),
+        radial-gradient(circle at 85% 65%, rgba(190, 35, 26, .055), transparent 30%);
 }
 
-@keyframes stars {
-    from { background-position: 0 0, 0 0, 0 0, 0 0; }
-    to { background-position: 80px 300px, -140px 220px, 160px -180px, -250px 350px; }
+::selection {
+    color: #fff;
+    background: var(--red);
 }
 
-::-webkit-scrollbar { width: 9px; }
-::-webkit-scrollbar-track { background: #02030a; }
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(#5445b8, #247a9a);
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #050607; }
+::-webkit-scrollbar-thumb { background: #4b4e4d; }
+::-webkit-scrollbar-thumb:hover { background: var(--red-hot); }
 
-/* ================= NAVIGATION ================= */
+/* ---------- NAV ---------- */
 
 nav {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    padding: 18px 7%;
-    background: rgba(2, 3, 10, .72);
-    backdrop-filter: blur(18px);
+    min-height: 68px;
+    padding: 0 6%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    background: rgba(5,6,7,.92);
+    border-bottom: 1px solid #252828;
+    backdrop-filter: blur(10px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(126, 111, 255, .22);
-    box-shadow: 0 8px 35px rgba(0, 0, 0, .35);
 }
 
 .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 2px;
     color: var(--white);
-    font-family: 'Orbitron', sans-serif;
-    font-size: 23px;
-    font-weight: 800;
-    letter-spacing: 4px;
-    text-shadow: 0 0 18px rgba(110, 205, 255, .4);
 }
 
-.logo span { color: var(--cyan); }
+.logo span {
+    color: var(--red-hot);
+}
 
 nav ul {
-    list-style: none;
     display: flex;
-    gap: 28px;
+    gap: 25px;
+    list-style: none;
 }
 
 nav a {
-    color: #929bb7;
+    color: #878a86;
     text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    transition: .3s;
-    position: relative;
-}
-
-nav a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 1px;
-    background: linear-gradient(90deg, var(--cyan), var(--pink));
-    bottom: -7px;
-    left: 50%;
-    transition: .3s;
-    box-shadow: 0 0 8px var(--cyan);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: .2s;
 }
 
 nav a:hover {
-    color: var(--white);
-    text-shadow: 0 0 12px rgba(85, 231, 255, .55);
+    color: #fff;
 }
 
-nav a:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-/* ================= GENERAL ================= */
+/* ---------- GLOBAL ---------- */
 
 section {
-    padding: 115px 8%;
     position: relative;
-}
-
-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 8%;
-    right: 8%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(111, 94, 255, .2), transparent);
+    padding: 115px 8%;
 }
 
 .section-title {
-    text-align: center;
-    margin-bottom: 60px;
+    max-width: 1050px;
+    margin: 0 auto 55px;
+    text-align: left;
+    border-left: 4px solid var(--red-hot);
+    padding-left: 22px;
 }
 
 .section-title .small {
-    color: var(--cyan);
-    font-family: 'Orbitron', sans-serif;
+    color: var(--red-hot);
     font-size: 10px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    text-shadow: 0 0 12px rgba(85, 231, 255, .5);
+    font-weight: 700;
+    letter-spacing: 3px;
 }
 
 .section-title h2 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(30px, 5vw, 47px);
     color: var(--white);
-    margin: 10px 0;
-    letter-spacing: 4px;
-    text-shadow: 0 0 25px rgba(130, 112, 255, .35);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(42px, 7vw, 72px);
+    line-height: .95;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 5px 0 8px;
 }
 
 .section-title p {
     color: var(--muted);
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .divider {
-    width: 145px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), var(--violet), transparent);
-    margin: 20px auto;
-    box-shadow: 0 0 12px rgba(85, 231, 255, .45);
+    width: 90px;
+    height: 2px;
+    margin: 14px 0 0;
+    background: var(--red-hot);
 }
 
-/* ================= HERO ================= */
+/* ---------- HERO ---------- */
 
 .hero {
     min-height: 100vh;
+    padding: 130px 8% 70px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 130px 20px 70px;
-    overflow: hidden;
     background:
-        radial-gradient(circle at 50% 48%, rgba(92, 62, 255, .13), transparent 24%),
-        radial-gradient(circle at 50% 50%, rgba(40, 179, 255, .07), transparent 44%);
+        linear-gradient(90deg, rgba(5,6,7,.96) 0%, rgba(5,6,7,.76) 48%, rgba(5,6,7,.92) 100%),
+        radial-gradient(circle at 75% 50%, rgba(174, 29, 20, .19), transparent 33%);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "UAC // MARS // ACTIVE";
+    position: absolute;
+    right: 8%;
+    top: 110px;
+    color: #555954;
+    font-size: 9px;
+    letter-spacing: 2px;
 }
 
 .hero::after {
     content: "";
     position: absolute;
-    width: 420px;
-    height: 420px;
-    border: 1px solid rgba(122, 109, 255, .12);
+    width: 480px;
+    height: 480px;
+    right: -130px;
+    bottom: -150px;
+    border: 1px solid rgba(181,31,32,.25);
     border-radius: 50%;
-    box-shadow:
-        0 0 80px rgba(91, 71, 255, .09),
-        inset 0 0 80px rgba(72, 180, 255, .04);
-    animation: orbit 14s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes orbit {
-    from { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(180deg) scale(1.04); }
-    to { transform: rotate(360deg) scale(1); }
+    box-shadow: 0 0 80px rgba(181,31,32,.08);
 }
 
 .hero-content {
-    max-width: 950px;
+    max-width: 1050px;
+    width: 100%;
     position: relative;
     z-index: 2;
 }
 
 .bonfire {
-    width: 90px;
-    height: 90px;
-    margin: 0 auto 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at 40% 35%, #fff 0 3%, #9deeff 12%, #8068ff 34%, #29195d 65%, transparent 70%);
-    box-shadow:
-        0 0 25px rgba(85, 231, 255, .5),
-        0 0 70px rgba(128, 92, 255, .3),
-        0 0 120px rgba(229, 108, 255, .12);
-    animation: cosmicPulse 2.6s ease-in-out infinite alternate;
+    width: auto;
+    height: auto;
+    margin: 0 0 20px;
+    display: block;
     font-size: 0;
+    filter: none;
 }
 
 .bonfire::after {
-    content: "✦";
-    font-size: 42px;
-    color: white;
-    text-shadow: 0 0 15px var(--cyan), 0 0 30px var(--violet);
-}
-
-@keyframes cosmicPulse {
-    from { transform: scale(.94); filter: brightness(.9); }
-    to { transform: scale(1.08); filter: brightness(1.25); }
+    content: "/// SYSTEM ONLINE";
+    color: var(--green);
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
 }
 
 .hero h1 {
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(48px, 9vw, 100px);
-    letter-spacing: 10px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(80px, 15vw, 190px);
+    line-height: .75;
+    font-weight: 900;
+    letter-spacing: -3px;
+    color: #e4e5df;
     text-transform: uppercase;
-    color: var(--white);
-    text-shadow:
-        0 0 15px rgba(255,255,255,.08),
-        0 0 35px rgba(95, 118, 255, .3),
-        0 0 75px rgba(177, 76, 255, .15);
-    margin-bottom: 15px;
+    text-shadow: 7px 7px 0 #141617;
+    margin-bottom: 24px;
 }
 
 .hero h2 {
-    color: #8e9bc0;
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(15px, 3vw, 22px);
-    letter-spacing: 6px;
-    font-weight: 400;
+    display: inline-block;
+    color: var(--red-hot);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: 4px;
+    border-top: 1px solid #51302d;
+    border-bottom: 1px solid #51302d;
+    padding: 8px 0;
 }
 
 .quote {
-    color: #a5afd0;
-    font-size: 18px;
-    margin: 30px auto;
-    font-style: italic;
+    max-width: 720px;
+    color: #9b9d98;
+    font-size: 14px;
+    margin: 28px 0;
 }
 
 .hero-description {
-    max-width: 680px;
-    margin: 25px auto 35px;
-    color: #7f8aa9;
-    font-size: 15px;
+    max-width: 720px;
+    color: #747874;
+    font-size: 13px;
+    margin-bottom: 32px;
 }
 
 .btn {
-    display: inline-block;
-    color: #f3f5ff;
-    background: linear-gradient(110deg, rgba(74, 71, 185, .9), rgba(36, 142, 177, .9));
-    padding: 13px 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 205px;
+    padding: 14px 25px;
+    color: #fff;
+    background: var(--red);
+    border: 1px solid #df4131;
     text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    border: 1px solid rgba(106, 231, 255, .65);
-    box-shadow:
-        0 0 20px rgba(64, 132, 255, .18),
-        inset 0 0 18px rgba(255,255,255,.04);
-    transition: .35s;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 0 #27100f;
+    transition: .2s;
 }
 
 .btn:hover {
-    background: linear-gradient(110deg, #6e4cff, #2ccce8);
-    box-shadow:
-        0 0 20px rgba(85, 231, 255, .35),
-        0 0 50px rgba(129, 77, 255, .25);
-    transform: translateY(-3px);
+    background: var(--red-hot);
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0 #27100f;
 }
 
-/* ================= ABOUT ================= */
-
-.about-container,
-.card,
-.boss,
-.achievement-box,
-.education-box {
-    backdrop-filter: blur(16px);
-}
+/* ---------- ABOUT ---------- */
 
 .about-container {
-    max-width: 900px;
+    max-width: 1050px;
     margin: auto;
-    background:
-        linear-gradient(135deg, rgba(17, 23, 55, .76), rgba(5, 7, 19, .88));
-    border: 1px solid var(--border);
-    padding: 50px;
+    padding: 42px;
+    background: var(--panel);
+    border: 1px solid var(--line);
     position: relative;
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.35),
-        inset 0 0 50px rgba(104, 84, 255, .025);
 }
 
-.about-container::before,
-.about-container::after {
-    content: "✦";
+.about-container::before {
+    content: "PERSONNEL // DOSSIER";
     position: absolute;
-    color: var(--cyan);
-    font-size: 13px;
-    text-shadow: 0 0 10px var(--cyan);
+    top: -10px;
+    left: 22px;
+    padding: 0 8px;
+    background: var(--black);
+    color: #626662;
+    font-size: 9px;
+    letter-spacing: 2px;
 }
 
-.about-container::before { top: 14px; left: 18px; }
-.about-container::after { bottom: 14px; right: 18px; }
+.about-container::after {
+    content: "CLASSIFIED";
+    position: absolute;
+    right: 20px;
+    bottom: 18px;
+    color: rgba(181,31,32,.3);
+    font-size: 26px;
+    font-weight: 800;
+    transform: rotate(-12deg);
+}
 
 .about-container p {
-    color: #9ca6c1;
-    margin-bottom: 20px;
-    text-align: center;
+    max-width: 820px;
+    color: #979a95;
+    font-size: 13px;
+    margin-bottom: 18px;
 }
 
-.about-container strong { color: var(--cyan); }
+.about-container strong {
+    color: #dedfd9;
+}
 
-/* ================= SKILLS ================= */
+/* ---------- SKILLS ---------- */
 
 .skills {
-    max-width: 950px;
+    max-width: 1050px;
     margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 50px;
 }
 
-.skill { margin-bottom: 30px; }
+.skill {
+    margin-bottom: 10px;
+}
 
 .skill-info {
     display: flex;
     justify-content: space-between;
-    color: #b6bfd8;
+    color: #a7aaa4;
+    font-size: 11px;
     margin-bottom: 8px;
-    font-size: 14px;
+}
+
+.skill-info span:last-child {
+    color: var(--red-hot);
 }
 
 .skill-bar {
-    height: 7px;
-    background: rgba(8, 11, 27, .9);
-    border: 1px solid rgba(92, 83, 170, .28);
-    overflow: hidden;
+    height: 8px;
+    background: #191c1c;
+    border: 1px solid #292d2d;
 }
 
 .skill-level {
     height: 100%;
-    background: linear-gradient(90deg, #4431a6, var(--violet), var(--cyan));
-    box-shadow: 0 0 14px rgba(85, 231, 255, .4);
+    background: linear-gradient(90deg, #7e1919, var(--red-hot));
+    box-shadow: 0 0 10px rgba(229,58,39,.22);
 }
 
 .level-90 { width: 90%; }
@@ -431,857 +383,583 @@ section::before {
 .level-75 { width: 75%; }
 .level-65 { width: 65%; }
 
-/* ================= INTEREST CARDS ================= */
+/* ---------- INTERESTS ---------- */
 
 .cards {
-    max-width: 1150px;
+    max-width: 1050px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 15px;
 }
 
 .card {
-    background:
-        linear-gradient(145deg, rgba(16, 23, 53, .82), rgba(5, 8, 21, .88));
-    border: 1px solid var(--border);
-    padding: 35px 25px;
-    text-align: center;
-    transition: .4s;
+    min-height: 250px;
+    padding: 28px;
+    background: var(--panel);
+    border: 1px solid var(--line);
     position: relative;
-    overflow: hidden;
+    transition: .2s;
 }
 
 .card::before {
     content: "";
     position: absolute;
-    inset: 7px;
-    border: 1px solid rgba(103, 224, 255, .07);
-    pointer-events: none;
-}
-
-.card::after {
-    content: "";
-    position: absolute;
-    width: 130px;
-    height: 130px;
-    left: 50%;
-    top: -80px;
-    transform: translateX(-50%);
-    background: rgba(91, 82, 255, .12);
-    filter: blur(35px);
-    pointer-events: none;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 0;
+    background: var(--red-hot);
+    transition: .25s;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(85, 231, 255, .65);
-    box-shadow:
-        0 20px 55px rgba(0,0,0,.55),
-        0 0 30px rgba(85, 126, 255, .12);
+    background: #111516;
+    border-color: #3b3e3e;
+    transform: translateY(-4px);
+}
+
+.card:hover::before {
+    height: 100%;
 }
 
 .card-icon {
-    font-size: 44px;
-    margin-bottom: 18px;
-    filter: drop-shadow(0 0 10px rgba(112, 111, 255, .35));
+    font-size: 34px;
+    margin-bottom: 25px;
+    filter: grayscale(1);
 }
 
 .card h3 {
-    color: #dfe5ff;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 18px;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--white);
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
 }
 
 .card p {
-    color: #808aa7;
-    font-size: 14px;
+    color: #717570;
+    font-size: 11px;
 }
 
-/* ================= BOSS BATTLES ================= */
+/* ---------- BOSS LOG ---------- */
 
 .boss-section {
-    background: radial-gradient(circle at center, rgba(89, 40, 160, .09), transparent 55%);
+    background: #080a0b;
 }
 
 .boss {
-    max-width: 950px;
+    max-width: 1050px;
     margin: auto;
-    border: 1px solid rgba(151, 104, 255, .28);
-    background: rgba(7, 9, 25, .78);
-    padding: 40px;
-    box-shadow: 0 25px 80px rgba(0,0,0,.3);
+    background: #0d1011;
+    border: 1px solid #2a2d2d;
+    padding: 35px;
 }
 
 .boss-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(113, 97, 205, .2);
-    padding-bottom: 20px;
-    margin-bottom: 25px;
+    gap: 20px;
+    padding-bottom: 18px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #292c2c;
 }
 
 .boss-header h3 {
-    color: #c6aaff;
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 2px;
-    font-size: 16px;
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
 }
 
 .boss-header span {
-    color: #687392;
-    font-size: 11px;
+    color: var(--red-hot);
+    font-size: 9px;
+    font-weight: 700;
 }
 
-.boss ul { list-style: none; }
+.boss ul {
+    list-style: none;
+}
 
 .boss li {
-    padding: 12px 0;
-    color: #8791ad;
-    border-bottom: 1px solid rgba(255,255,255,.035);
+    padding: 14px 5px;
+    color: #858985;
+    border-bottom: 1px solid #1b1e1e;
+    font-size: 12px;
 }
 
 .boss li::before {
-    content: "✦ ";
-    color: var(--cyan);
-    text-shadow: 0 0 9px var(--cyan);
+    content: "[X] ";
+    color: var(--red-hot);
+    font-weight: 700;
 }
 
-/* ================= ACHIEVEMENT ================= */
+/* ---------- ACHIEVEMENT ---------- */
 
 .achievement {
-    background: radial-gradient(circle at center, rgba(92, 76, 255, .12), transparent 58%);
+    background:
+        linear-gradient(180deg, #050607, #0b0909, #050607);
 }
 
 .achievement-box {
-    max-width: 850px;
+    max-width: 1050px;
     margin: auto;
-    padding: 55px 45px;
-    text-align: center;
-    background:
-        radial-gradient(circle at center, rgba(102, 74, 255, .10), transparent 50%),
-        linear-gradient(145deg, rgba(17, 20, 48, .94), rgba(4, 6, 17, .98));
-    border: 1px solid rgba(121, 108, 255, .62);
+    padding: 48px;
+    background: #0b0e0f;
+    border: 1px solid #3b2a28;
+    border-left: 5px solid var(--red-hot);
     position: relative;
-    box-shadow:
-        0 0 45px rgba(0,0,0,.75),
-        0 0 45px rgba(87, 72, 255, .08),
-        inset 0 0 60px rgba(90, 70, 255, .05);
 }
 
-.achievement-box::before,
+.achievement-box::before {
+    content: "MISSION RECORD // 001";
+    display: block;
+    color: #6e716d;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
 .achievement-box::after {
-    content: "✦";
+    content: "COMPLETED";
     position: absolute;
-    color: var(--cyan);
-    font-size: 18px;
-    text-shadow: 0 0 14px var(--cyan);
+    right: 30px;
+    top: 30px;
+    padding: 6px 10px;
+    color: var(--green);
+    border: 1px solid #4d5b31;
+    font-size: 9px;
+    letter-spacing: 2px;
 }
-
-.achievement-box::before { top: 15px; left: 20px; }
-.achievement-box::after { bottom: 15px; right: 20px; }
 
 .achievement-icon {
-    font-size: 58px;
-    margin-bottom: 15px;
-    filter: drop-shadow(0 0 18px rgba(85, 231, 255, .35));
-    animation: achievementGlow 2.5s ease-in-out infinite alternate;
-}
-
-@keyframes achievementGlow {
-    from { transform: scale(.97); filter: drop-shadow(0 0 7px rgba(85,231,255,.25)); }
-    to { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(168,111,255,.65)); }
+    font-size: 40px;
+    filter: grayscale(1);
+    margin-bottom: 12px;
 }
 
 .achievement-box h3 {
-    color: #dfe6ff;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 29px;
-    letter-spacing: 4px;
-    margin-bottom: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--white);
+    font-size: 44px;
+    letter-spacing: 2px;
+    line-height: 1;
 }
 
 .achievement-subtitle {
-    color: #707b9d;
-    font-size: 11px;
-    letter-spacing: 4px;
+    color: var(--red-hot);
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-top: 6px;
 }
 
 .achievement-line {
-    width: 170px;
+    width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--cyan), var(--violet), transparent);
-    margin: 25px auto;
+    background: #2b2e2e;
+    margin: 25px 0;
 }
 
 .achievement-box p {
-    color: #909ab6;
-    margin-bottom: 18px;
+    max-width: 800px;
+    color: #858985;
+    font-size: 12px;
+    margin-bottom: 15px;
 }
 
-.achievement-box strong { color: var(--cyan); }
+.achievement-box strong {
+    color: #d7d8d2;
+}
 
 .achievement-status {
     display: inline-block;
-    margin: 20px 0;
-    padding: 12px 20px;
-    border: 1px solid rgba(85, 231, 255, .3);
-    color: #8eefff;
-    font-size: 11px;
-    letter-spacing: 2px;
-    background: rgba(52, 116, 157, .09);
-    box-shadow: inset 0 0 20px rgba(85, 231, 255, .025);
+    margin-top: 15px;
+    padding: 10px 14px;
+    color: var(--red-hot);
+    border: 1px solid #512b28;
+    background: rgba(181,31,32,.06);
+    font-size: 9px;
+    letter-spacing: 1px;
 }
 
 .achievement-status span {
-    color: #56617d;
-    margin: 0 8px;
+    color: #4e514e;
+    margin: 0 7px;
 }
 
 .achievement-quote {
-    color: #b4bde0 !important;
-    font-size: 19px;
-    margin-top: 25px;
+    color: #aaa !important;
+    border-left: 2px solid var(--red-hot);
+    padding-left: 12px;
+    font-style: italic;
 }
 
-/* ================= EDUCATION ================= */
+/* ---------- EDUCATION ---------- */
 
 .education {
-    max-width: 850px;
+    max-width: 1050px;
     margin: auto;
 }
 
 .education-box {
-    border: 1px solid var(--border);
-    background: rgba(9, 13, 31, .78);
-    padding: 45px;
-    text-align: center;
+    padding: 35px;
+    background: var(--panel);
+    border: 1px solid var(--line);
     position: relative;
-    box-shadow: 0 20px 60px rgba(0,0,0,.3);
 }
 
-.education-box::before,
-.education-box::after {
-    content: "✦";
-    position: absolute;
-    color: var(--violet);
-    text-shadow: 0 0 12px var(--violet);
+.education-box::before {
+    content: "UAC // TRAINING RECORD";
+    display: block;
+    color: #646863;
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
 }
-
-.education-box::before { top: 15px; left: 20px; }
-.education-box::after { bottom: 15px; right: 20px; }
 
 .education-box h3 {
-    color: #dce4ff;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 22px;
-    margin-bottom: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    color: var(--white);
+    font-size: 34px;
+    letter-spacing: 1px;
 }
 
 .education-box p {
-    color: #8791ae;
-    margin: 5px;
+    color: #7d817c;
+    font-size: 12px;
 }
 
 .status {
     display: inline-block;
-    margin-top: 20px;
-    color: var(--cyan);
-    border: 1px solid rgba(85, 231, 255, .3);
-    padding: 7px 18px;
-    font-size: 11px;
+    margin-top: 18px;
+    padding: 7px 12px;
+    color: var(--green);
+    border: 1px solid #46502e;
+    font-size: 9px;
     letter-spacing: 2px;
-    background: rgba(85, 231, 255, .04);
 }
 
-/* ================= CONTACT ================= */
+/* ---------- CONTACT ---------- */
 
 .contact {
-    text-align: center;
-    background:
-        radial-gradient(circle at center bottom, rgba(92, 66, 255, .13), transparent 45%);
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact p {
-    color: #8791ae;
-    margin-bottom: 30px;
+    color: #818580;
+    font-size: 12px;
+    margin-bottom: 22px;
 }
 
-/* ================= FOOTER ================= */
+/* ---------- FOOTER ---------- */
 
 footer {
+    padding: 35px 20px;
     text-align: center;
-    padding: 40px 20px;
-    background: #010208;
-    border-top: 1px solid rgba(110, 99, 196, .18);
-    color: #58617a;
-    font-size: 12px;
+    background: #030404;
+    border-top: 1px solid #222525;
+    color: #555954;
+    font-size: 9px;
+    letter-spacing: 1px;
 }
 
 footer .fire {
-    color: var(--cyan);
-    font-size: 25px;
-    display: block;
-    margin-bottom: 10px;
-    text-shadow: 0 0 15px var(--cyan), 0 0 30px var(--violet);
-    animation: cosmicPulse 2s ease-in-out infinite alternate;
+    display: none;
 }
 
-/* ================= MOBILE ================= */
+/* ---------- MOBILE ---------- */
 
-@media(max-width:800px) {
+@media(max-width: 800px) {
     nav {
-        padding: 15px 5%;
+        padding: 12px 5%;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
     }
 
     nav ul {
-        gap: 14px;
+        gap: 11px;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    nav a { font-size: 9px; }
-
-    .hero { padding-top: 150px; }
-
-    .hero h1 { letter-spacing: 5px; }
-
-    .cards { grid-template-columns: 1fr; }
-
-    .about-container,
-    .education-box,
-    .boss,
-    .achievement-box {
-        padding: 30px 20px;
+    nav a {
+        font-size: 8px;
     }
 
-    section { padding: 80px 6%; }
+    .hero {
+        padding-top: 155px;
+    }
 
-    .boss-header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
+    .hero h1 {
+        font-size: clamp(68px, 19vw, 110px);
+    }
+
+    .skills {
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .about-container,
+    .boss,
+    .achievement-box,
+    .education-box {
+        padding: 28px 22px;
     }
 
     .achievement-box h3 {
-        font-size: 23px;
-        letter-spacing: 2px;
+        font-size: 34px;
     }
 
-    .achievement-status {
-        font-size: 9px;
-        line-height: 2;
+    .achievement-box::after {
+        position: static;
+        display: inline-block;
+        margin-bottom: 18px;
     }
 
-    .hero::after {
-        width: 290px;
-        height: 290px;
+    .boss-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
-@media(max-width:450px) {
+@media(max-width: 450px) {
+    section {
+        padding: 85px 6%;
+    }
+
     .hero h1 {
-        font-size: 40px;
-        letter-spacing: 4px;
+        letter-spacing: -1px;
     }
 
-    .hero h2 {
-        font-size: 14px;
-        letter-spacing: 3px;
+    .section-title h2 {
+        font-size: 45px;
     }
-
-    nav ul { gap: 8px; }
-
-    .section-title h2 { font-size: 28px; }
 }
 </style>
 </head>
 
 <body>
 
-
-    <!-- ================= NAVIGATION ================= -->
-
-    <nav>
-
-        <div class="logo">
-            GAURISH<span>.</span>
-        </div>
-
-        <ul>
-            <li><a href="#home">BONFIRE</a></li>
-            <li><a href="#about">LORE</a></li>
-            <li><a href="#skills">ABILITIES</a></li>
-            <li><a href="#interests">INTERESTS</a></li>
-            <li><a href="#bosses">BOSS BATTLES</a></li>
-            <li><a href="#achievement">ACHIEVEMENT</a></li>
-            <li><a href="#education">JOURNEY</a></li>
-            <li><a href="#contact">SUMMON</a></li>
-        </ul>
-
-    </nav>
-
-
-    <!-- ================= HERO ================= -->
-
-    <section class="hero" id="home">
-
-        <div class="hero-content">
-
-            <div class="bonfire">🔥</div>
-
-            <h1>GAURISH</h1>
-
-            <h2>THE UNKINDLED</h2>
-
-            <div class="divider"></div>
-
-            <p class="quote">
-                "In a world swallowed by darkness,<br>
-                even a faint ember can keep the flame alive."
-            </p>
-
-            <p class="hero-description">
-                A second-year Computer Science Engineering student,
-                wandering through the endless kingdoms of technology,
-                gaming and adventure.
-            </p>
-
-            <a href="#about" class="btn">
-                ENTER THE KINGDOM
-            </a>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= ABOUT ================= -->
-
-    <section id="about">
-
-        <div class="section-title">
-
-            <span class="small">The Forgotten Lore</span>
-
-            <h2>THE WANDERER</h2>
-
-            <div class="divider"></div>
-
-            <p>Bearer of knowledge. Seeker of embers.</p>
-
-        </div>
-
-
-        <div class="about-container">
-
-            <p>
-                I am <strong>Gaurish</strong>, a second-year
-                <strong>B.Tech Computer Science Engineering</strong>
-                student at <strong>JITD</strong>.
-            </p>
-
-            <p>
-                My journey through the world of technology is much like
-                travelling through a forgotten kingdom — filled with
-                mysteries, challenges, unexpected enemies and discoveries.
-            </p>
-
-            <p>
-                I enjoy exploring technology, playing games, watching
-                movies and online content, and spending time with friends.
-            </p>
-
-            <p>
-                Every bug is another enemy.
-                Every assignment is another boss.
-                Every failure is another chance to rise.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= SKILLS ================= -->
-
-    <section id="skills">
-
-        <div class="section-title">
-
-            <span class="small">Character Attributes</span>
-
-            <h2>ABILITIES</h2>
-
-            <div class="divider"></div>
-
-            <p>Choose your path wisely, Ashen One.</p>
-
-        </div>
-
-
-        <div class="skills">
-
-            <div class="skill">
-
-                <div class="skill-info">
-                    <span>⚔️ Computer Science</span>
-                    <span>90%</span>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-level level-90"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-info">
-                    <span>🎮 Gaming</span>
-                    <span>80%</span>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-level level-80"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-info">
-                    <span>⚽ Football</span>
-                    <span>75%</span>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-level level-75"></div>
-                </div>
-
-            </div>
-
-
-            <div class="skill">
-
-                <div class="skill-info">
-                    <span>🛡️ Persistence</span>
-                    <span>65%</span>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-level level-65"></div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= INTERESTS ================= -->
-
-    <section id="interests">
-
-        <div class="section-title">
-
-            <span class="small">Paths of the Warrior</span>
-
-            <h2>INTERESTS</h2>
-
-            <div class="divider"></div>
-
-            <p>Three paths. One journey.</p>
-
-        </div>
-
-
-        <div class="cards">
-
-            <div class="card">
-
-                <div class="card-icon">🎮</div>
-
-                <h3>GAMING</h3>
-
-                <p>
-                    Exploring dangerous worlds, defeating bosses,
-                    discovering secrets and experiencing different
-                    gaming adventures.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">🍿</div>
-
-                <h3>WATCHING</h3>
-
-                <p>
-                    Movies, series, YouTube and random online content —
-                    the perfect rest after surviving another difficult quest.
-                </p>
-
-            </div>
-
-
-            <div class="card">
-
-                <div class="card-icon">⚽</div>
-
-                <h3>FOOTBALL</h3>
-
-                <p>
-                    Leaving the digital kingdom behind and stepping onto
-                    the field to battle alongside friends.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= BOSS BATTLES ================= -->
-
-    <section class="boss-section" id="bosses">
-
-        <div class="section-title">
-
-            <span class="small">Enemies Defeated</span>
-
-            <h2>BOSS BATTLES</h2>
-
-            <div class="divider"></div>
-
-            <p>The journey never truly ends.</p>
-
-        </div>
-
-
-        <div class="boss">
-
-            <div class="boss-header">
-
-                <h3>☠ GAURISH'S BOSS LOG</h3>
-
-                <span>STATUS: STILL FIGHTING</span>
-
-            </div>
-
-            <ul>
-
-                <li>Early Morning Classes</li>
-
-                <li>Difficult Programming Assignments</li>
-
-                <li>Debugging at 2 AM</li>
-
-                <li>Semester Examinations</li>
-
-                <li>Impossible Coding Errors</li>
-
-                <li>Deadlines Approaching at Maximum Speed</li>
-
-            </ul>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= ACHIEVEMENT ================= -->
-
-    <section class="achievement" id="achievement">
-
-        <div class="section-title">
-
-            <span class="small">Legendary Deed</span>
-
-            <h2>ACHIEVEMENT UNLOCKED</h2>
-
-            <div class="divider"></div>
-
-            <p>The First Flame has fallen.</p>
-
-        </div>
-
-
-        <div class="achievement-box">
-
-            <div class="achievement-icon">
-                🏆
-            </div>
-
-            <h3>THE AGE OF DARK</h3>
-
-            <p class="achievement-subtitle">
-                DARK SOULS — LORDRAN
-            </p>
-
-            <div class="achievement-line"></div>
-
-            <p>
-                The Chosen Undead journeyed through Lordran,
-                overcame countless foes, and stood before the
-                Lord of Cinder.
-            </p>
-
-            <p>
-                <strong>Gwyn, Lord of Cinder</strong> was defeated.
-            </p>
-
-            <p>
-                The First Flame was not linked.
-                The Age of Fire was allowed to fade,
-                and the <strong>Age of Dark</strong> was chosen.
-            </p>
-
-            <div class="achievement-status">
-
-                ⚔️ GWYN DEFEATED
-
-                <span>•</span>
-
-                🔥 AGE OF DARK CHOSEN
-
-            </div>
-
-            <p class="achievement-quote">
-                "The Age of Fire is ending."
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= EDUCATION ================= -->
-
-    <section id="education">
-
-        <div class="section-title">
-
-            <span class="small">The Academy</span>
-
-            <h2>THE JOURNEY</h2>
-
-            <div class="divider"></div>
-
-            <p>The path toward knowledge.</p>
-
-        </div>
-
-
-        <div class="education">
-
-            <div class="education-box">
-
-                <h3>
-                    B.Tech — Computer Science Engineering
-                </h3>
-
-                <p>
-                    JITD
-                </p>
-
-                <p>
-                    Computer Science Engineering
-                </p>
-
-                <span class="status">
-                    2ND YEAR — QUEST ACTIVE
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section class="contact" id="contact">
-
-        <div class="section-title">
-
-            <span class="small">Summon Sign</span>
-
-            <h2>LET'S CONNECT</h2>
-
-            <div class="divider"></div>
-
-            <p>The bonfire is lit.</p>
-
-        </div>
-
-
-        <p>
-            If you wish to begin a conversation,
-            leave your summon sign.
-        </p>
-
+<nav>
+    <div class="logo">GAURISH<span>//</span>UAC</div>
+    <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#profile">PROFILE</a></li>
+        <li><a href="#arsenal">ARSENAL</a></li>
+        <li><a href="#operations">OPERATIONS</a></li>
+        <li><a href="#mission">MISSION LOG</a></li>
+        <li><a href="#training">TRAINING</a></li>
+        <li><a href="#contact">GITHUB</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="bonfire"></div>
+        <h1>GAURISH</h1>
+        <h2>CODE. BUILD. DESTROY LIMITS.</h2>
+        <div class="divider"></div>
         <p class="quote">
-            "May the flames guide thee."
+            "The system does not care how hard the problem is.<br>
+            It only cares whether you finish it."
         </p>
+        <p class="hero-description">
+            Computer Science Engineering student. Learning systems from the ground up,
+            building projects, breaking things, fixing them, and getting better one mission at a time.
+        </p>
+        <a href="#profile" class="btn">ENTER UAC DATABASE</a>
+    </div>
+</section>
 
+<section id="profile">
+    <div class="section-title">
+        <span class="small">Personnel File // 001</span>
+        <h2>PROFILE</h2>
+        <div class="divider"></div>
+        <p>Identity confirmed. Mission in progress.</p>
+    </div>
 
-        <!-- CHANGE YOUR USERNAME HERE -->
-
-        <a href="https://github.com/GaurishOK" class="btn" target="_blank" rel="noopener noreferrer">
-
-            🔥 PLACE SUMMON SIGN
-
-        </a>
-
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <span class="fire">🔥</span>
-
+    <div class="about-container">
         <p>
-            THE BONFIRE REMAINS LIT
+            Designation: <strong>GAURISH</strong>. Current assignment:
+            <strong>Computer Science Engineering</strong>.
         </p>
-
         <p>
-            © 2026 GAURISH — THE UNKINDLED
+            Primary objective: understand how software actually works rather than
+            simply memorizing how to use it.
         </p>
-
         <p>
-            <i>
-                Ash seeketh embers.
-            </i>
+            Current operating environment includes programming, game development,
+            problem solving, experiments, and whatever difficult thing comes next.
         </p>
+        <p>
+            No finished legend. No perfect build. Just a workbench, a keyboard,
+            and another problem waiting to be solved.
+        </p>
+    </div>
+</section>
 
-    </footer>
+<section id="arsenal">
+    <div class="section-title">
+        <span class="small">Combat Systems // Loadout</span>
+        <h2>ARSENAL</h2>
+        <div class="divider"></div>
+        <p>Tools currently being forged.</p>
+    </div>
 
+    <div class="skills">
+        <div class="skill">
+            <div class="skill-info"><span>C / SYSTEMS FUNDAMENTALS</span><span>90%</span></div>
+            <div class="skill-bar"><div class="skill-level level-90"></div></div>
+        </div>
 
-<script>
-/* Cosmic atmosphere — visual only; page content remains unchanged. */
-document.addEventListener("mousemove", (event) => {
-    const x = (event.clientX / window.innerWidth - 0.5) * 2;
-    const y = (event.clientY / window.innerHeight - 0.5) * 2;
-    document.documentElement.style.setProperty("--mx", `${x * 7}px`);
-    document.documentElement.style.setProperty("--my", `${y * 7}px`);
-});
-</script>
+        <div class="skill">
+            <div class="skill-info"><span>C++ / CURRENT BUILD</span><span>80%</span></div>
+            <div class="skill-bar"><div class="skill-level level-80"></div></div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-info"><span>PROBLEM SOLVING</span><span>75%</span></div>
+            <div class="skill-bar"><div class="skill-level level-75"></div></div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-info"><span>PERSISTENCE</span><span>65%</span></div>
+            <div class="skill-bar"><div class="skill-level level-65"></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="operations">
+    <div class="section-title">
+        <span class="small">Active Deployments</span>
+        <h2>OPERATIONS</h2>
+        <div class="divider"></div>
+        <p>Current areas of interest.</p>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">⌘</div>
+            <h3>SOFTWARE</h3>
+            <p>Learning how programs are built from the fundamentals upward, with an emphasis on understanding instead of copying.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">▣</div>
+            <h3>GAME DEV</h3>
+            <p>Exploring the engineering behind interactive worlds, game logic, graphics, systems, and the code connecting them.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">◉</div>
+            <h3>EXPERIMENTS</h3>
+            <p>Small projects, strange ideas, hardware experiments, debugging sessions, and anything that turns theory into something real.</p>
+        </div>
+    </div>
+</section>
+
+<section class="boss-section" id="bosses">
+    <div class="section-title">
+        <span class="small">Threat Assessment</span>
+        <h2>ACTIVE THREATS</h2>
+        <div class="divider"></div>
+        <p>Problems have been identified. They have not been eliminated.</p>
+    </div>
+
+    <div class="boss">
+        <div class="boss-header">
+            <h3>THREAT DATABASE</h3>
+            <span>STATUS: ENGAGED</span>
+        </div>
+        <ul>
+            <li>Programming concepts that refuse to make sense on the first attempt</li>
+            <li>Large projects that look impossible before the first line of code</li>
+            <li>Debugging problems caused by one microscopic mistake</li>
+            <li>Deadlines moving faster than expected</li>
+            <li>Turning ideas into actual finished projects</li>
+            <li>Consistency — the recurring final boss</li>
+        </ul>
+    </div>
+</section>
+
+<section class="achievement" id="mission">
+    <div class="section-title">
+        <span class="small">Mission Record</span>
+        <h2>COMPLETED OBJECTIVE</h2>
+        <div class="divider"></div>
+        <p>One mission ends. Another loads.</p>
+    </div>
+
+    <div class="achievement-box">
+        <div class="achievement-icon">▣</div>
+        <h3>FIRST CONTACT</h3>
+        <p class="achievement-subtitle">FROM WATCHING CODE TO WRITING IT</p>
+        <div class="achievement-line"></div>
+        <p>
+            The first objective was simple: stop treating programming as something
+            that belongs to other people and start learning how to build things personally.
+        </p>
+        <p>
+            The process is still underway. The important part is that the terminal is open,
+            the compiler is running, and the next attempt is already queued.
+        </p>
+        <div class="achievement-status">
+            OBJECTIVE COMPLETE <span>•</span> NEXT MISSION AVAILABLE
+        </div>
+        <p class="achievement-quote">
+            "Start small. Understand everything. Then build something that scares you."
+        </p>
+    </div>
+</section>
+
+<section id="training">
+    <div class="section-title">
+        <span class="small">UAC Training Record</span>
+        <h2>TRAINING</h2>
+        <div class="divider"></div>
+        <p>Knowledge is the equipment that does not run out of ammunition.</p>
+    </div>
+
+    <div class="education">
+        <div class="education-box">
+            <h3>B.TECH — COMPUTER SCIENCE ENGINEERING</h3>
+            <p>Current academic assignment: Computer Science</p>
+            <p>Focus: programming fundamentals, systems, software, and projects</p>
+            <span class="status">TRAINING ACTIVE // DO NOT STOP</span>
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="section-title">
+        <span class="small">External Link</span>
+        <h2>GITHUB</h2>
+        <div class="divider"></div>
+        <p>The public terminal.</p>
+    </div>
+
+    <p>
+        Projects, experiments, unfinished ideas and whatever survives the debugging process.
+    </p>
+
+    <a href="https://github.com/GaurishOK" class="btn" target="_blank" rel="noopener noreferrer">
+        ACCESS GITHUB
+    </a>
+</section>
+
+<footer>
+    <p>GAURISH // UAC TERMINAL</p>
+    <p>BUILD SOMETHING. BREAK SOMETHING. LEARN SOMETHING.</p>
+</footer>
 
 </body>
-
 </html>
